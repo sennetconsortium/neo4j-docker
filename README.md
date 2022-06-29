@@ -1,4 +1,4 @@
-# neo4j-docker 4.2.5
+# neo4j-docker 4.4.8
 
 All the neo4j(`dev`, `test`, `stage`, and `prod`) deployments use the same SenNet neo4j image. The neo4j configuration as well as database files are mounted from the host to the container for data persistence across container restarts.
 
@@ -88,12 +88,12 @@ All the `localhost`, `dev`, `test`, `stage`, and `prod` versions is based on the
 
 ````
 cd neo4j-image
-sudo docker build -t sennet/neo4j-image:4.2.5 .
+sudo docker build -t sennet/neo4j-image:4.4.8 .
 ````
 
 Then publish it to the DockerHub:
 
 ````
 sudo docker login
-sudo docker push sennet/neo4j-image:4.2.5
+sudo docker push sennet/neo4j-image:4.4.8
 ````
