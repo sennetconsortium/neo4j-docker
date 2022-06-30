@@ -1,5 +1,5 @@
 # Parent image
-FROM centos:7
+FROM redhat/ubi8:8.6
 
 LABEL description="Neo4j v4.4.8 for SenNet"
 
