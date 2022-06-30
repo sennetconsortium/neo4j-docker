@@ -2,10 +2,10 @@ version: "3.7"
 
 services:
 
-  hubmap-neo4j-dev:
-    image: hubmap/neo4j-image:4.2.5
-    hostname: hubmap-neo4j-dev
-    container_name: hubmap-neo4j-dev
+  sennet-neo4j-dev:
+    image: sennet/neo4j-image:4.4.8
+    hostname: sennet-neo4j-dev
+    container_name: sennet-neo4j-dev
     # By default this `deploy` key only takes effect when deploying to a swarm with docker stack deploy, and is ignored by docker-compose up
     # However, we can use the `--compatibility` flag within `docker-compose --compatibility up`
     # The `--compatibility` flag will attempt to convert deploy keys in docker-compose v3 to their non-Swarm equivalent

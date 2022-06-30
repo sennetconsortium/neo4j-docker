@@ -84,7 +84,7 @@ sudo ./neo4j-docker.sh dev stop
 
 ## Update SenNet neo4j docker image
 
-All the `localhost`, `dev`, `test`, `stage`, and `prod` versions is based on the same `sennet/neo4j-image:latest` image. If you need to update the neo4j image, recrerate it with 
+All the `dev`, `test`, `stage`, and `prod` versions is based on the same `sennet/neo4j-image:latest` image. If you need to update the neo4j image, recrerate it with 
 
 ````
 cd neo4j-image
