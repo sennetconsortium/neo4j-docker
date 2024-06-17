@@ -1,11 +1,9 @@
 # Ignore the mounted data
 dev/data/*
-test/data/*
-stage/data/*
 prod/data/*
+
+**/.DS_Store
 
 # Keep the empty README.md to preserve the data directory in github
 !dev/data/README.md
-!test/data/README.md
-!stage/data/README.md
 !prod/data/README.md
