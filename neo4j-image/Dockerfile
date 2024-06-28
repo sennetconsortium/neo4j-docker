@@ -1,7 +1,7 @@
 # Parent image
 FROM redhat/ubi8:8.6
 
-LABEL description="Neo4j v4.4.8 for SenNet"
+LABEL description="Neo4j v5.20.0 for SenNet"
 
 # Change to directory that contains the Dockerfile
 WORKDIR /usr/src/app
@@ -10,26 +10,28 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Reduce the number of layers in image by minimizing the number of separate RUN commands
-# 1 - Update the package listings
-# 2 - Install wget and OpenJRE 11 (packaged with OpenJDK 11)
-# 3 - Download neo4j community server
-# 4 - Extract neo4j tarball
-# 5 - Rename folder to neo4j
-# 6 - Download the Apoc jar
-# 7 - Move the apoc jar to neo4j plugins
-# 8 - Remove the downloaded neo4j tarball
-# 9 - Clean all yum cache
+# Update the package listings
+# Install wget and OpenJRE 17 (packaged with OpenJDK 17)
+# Download neo4j community server
+# Extract neo4j tarball
+# Rename folder to neo4j
+# Move the APOC core jar to plugins directory
+# Download the APOC extended jar
+# Move the APOC extended jar to neo4j plugins directory
+# Remove the downloaded neo4j tarball
+# Clean all yum cache
 RUN yum update -y && \
-    yum install -y wget java-11-openjdk && \
-    wget http://dist.neo4j.org/neo4j-community-4.4.8-unix.tar.gz && \
-    tar -zxvf neo4j-community-4.4.8-unix.tar.gz && \
-    mv neo4j-community-4.4.8 neo4j && \
-    wget https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/4.3.0.6/apoc-4.3.0.6-all.jar && \
-    mv apoc-4.3.0.6-all.jar neo4j/plugins && \
-    rm neo4j-community-4.4.8-unix.tar.gz && \
+    yum install -y wget java-17-openjdk && \
+    wget http://dist.neo4j.org/neo4j-community-5.20.0-unix.tar.gz && \
+    tar -zxvf neo4j-community-5.20.0-unix.tar.gz && \
+    mv neo4j-community-5.20.0 neo4j && \
+    mv neo4j/labs/apoc-5.20.0-core.jar neo4j/plugins && \
+    wget https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/5.20.0/apoc-5.20.0-extended.jar && \
+    mv apoc-5.20.0-extended.jar neo4j/plugins && \
+    rm neo4j-community-5.20.0-unix.tar.gz && \
     yum clean all
-    
-# The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime. 
+
+# The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime.
 # EXPOSE does not make the ports of the container accessible to the host.
 EXPOSE 7474 7687
 
