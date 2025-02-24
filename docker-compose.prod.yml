@@ -1,7 +1,7 @@
 services:
 
   sennet-neo4j-prod:
-    image: sennet/neo4j-image:5.20.0
+    image: sennet/neo4j:5.20.0
     hostname: sennet-neo4j-prod
     container_name: sennet-neo4j-prod
     deploy:
